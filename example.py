@@ -1,6 +1,6 @@
 """Example app to login to GitHub using the StatefulBrowser class."""
 
-from __future__ import print_function
+
 import argparse
 import mechanicalsoup
 from getpass import getpass

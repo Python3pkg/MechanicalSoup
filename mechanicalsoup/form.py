@@ -8,7 +8,7 @@ class Form(object):
         self.form = form
 
     def input(self, data):
-        for (name, value) in data.items():
+        for (name, value) in list(data.items()):
             i = self.form.find("input", {"name": name})
             if not i:
                 raise LinkNotFoundError("No input field named " + name)
@@ -22,7 +22,7 @@ class Form(object):
                 del option.attrs["checked"]
 
     def check(self, data):
-        for (name, value) in data.items():
+        for (name, value) in list(data.items()):
             # Complain if we don't find the name, regardless of the
             # value
             inputs = self.form.find_all("input", {"name": name})
@@ -45,14 +45,14 @@ class Form(object):
                         found = True
                         break
                 if not found:
-                    print(self.form)
+                    print((self.form))
                     raise LinkNotFoundError(
                         "No input checkbox named %s with choice %s" %
                         (name, choice)
                         )
 
     def textarea(self, data):
-        for (name, value) in data.items():
+        for (name, value) in list(data.items()):
             t = self.form.find("textarea", {"name": name})
             if not t:
                 raise LinkNotFoundError("No textarea named " + name)
@@ -103,7 +103,7 @@ class Form(object):
         control['type'] = type
         control['name'] = name
         control['value'] = value
-        for k, v in kwargs.items():
+        for k, v in list(kwargs.items()):
             control[k] = v
         self.form.append(control)
         return control

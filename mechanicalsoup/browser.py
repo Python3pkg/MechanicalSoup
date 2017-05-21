@@ -19,7 +19,7 @@ class Browser(object):
         self.session = session or requests.Session()
 
         if requests_adapters is not None:
-            for adaptee, adapter in requests_adapters.items():
+            for adaptee, adapter in list(requests_adapters.items()):
                 self.session.mount(adaptee, adapter)
 
         self.soup_config = soup_config or dict()

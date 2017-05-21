@@ -3,7 +3,7 @@ import requests_mock
 try:
     from urllib.parse import parse_qsl
 except ImportError:
-    from urlparse import parse_qsl
+    from urllib.parse import parse_qsl
 
 
 def test_submit_online():
